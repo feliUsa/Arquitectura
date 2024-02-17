@@ -4,6 +4,8 @@
  */
 package Ruta;
 
+import Modelo.Carta;
+import Modelo.CartaDistancia;
 import java.util.Stack;
 
 /**
@@ -64,15 +66,15 @@ public class Jugador {
     for (Carta carta : mano) {
         if (carta.getTipo() == TipoCarta.DISTANCIA) {
             // Obtener el valor de la carta de distancia utilizando los métodos estáticos de CartasDistancia
-            if (carta.getValor() == CartasDistancia.cartaDe25().getDistancia()) {
+            if (carta.getValor() == CartaDistancia.cartaDe25().getDistancia()) {
                 sumaDistancias += 25;
-            } else if (carta.getValor() == CartasDistancia.cartaDe50().getDistancia()) {
+            } else if (carta.getValor() == CartaDistancia.cartaDe50().getDistancia()) {
                 sumaDistancias += 50;
-            } else if (carta.getValor() == CartasDistancia.cartaDe75().getDistancia()) {
+            } else if (carta.getValor() == CartaDistancia.cartaDe75().getDistancia()) {
                 sumaDistancias += 75;
-            } else if (carta.getValor() == CartasDistancia.cartaDe100().getDistancia()) {
+            } else if (carta.getValor() == CartaDistancia.cartaDe100().getDistancia()) {
                 sumaDistancias += 100;
-            } else if (carta.getValor() == CartasDistancia.cartaDe200().getDistancia()) {
+            } else if (carta.getValor() == CartaDistancia.cartaDe200().getDistancia()) {
                 sumaDistancias += 200;
             }
         }

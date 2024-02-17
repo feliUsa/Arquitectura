@@ -4,6 +4,7 @@
  */
 package Ruta;
 
+import Modelo.Carta;
 import java.util.Stack;
 
 /**

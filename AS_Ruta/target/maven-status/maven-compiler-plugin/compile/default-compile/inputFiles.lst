@@ -1,9 +1,12 @@
-/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/CartasProblema.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Modelo/CartaSolucion.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Modelo/Carta.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Modelo/CartaSeguridad.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Modelo/CartaProblema.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Controlador/Controlador.java
 /home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/Jugador.java
 /home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/TipoCarta.java
-/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/CartaSeguridad.java
-/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/CartasSolucion.java
-/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/Carta.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Modelo/CartaDistancia.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Main/Main.java
 /home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/Main.java
 /home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/Mazo.java
-/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Ruta/CartasDistancia.java
+/home/isabella/NetBeansProjects/AS_Ruta/src/main/java/Vista/Vista.java

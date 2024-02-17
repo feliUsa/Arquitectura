@@ -1,9 +1,8 @@
-Ruta/CartasSolucion.class
-Ruta/Main.class
-Ruta/CartaSeguridad.class
-Ruta/CartasDistancia.class
-Ruta/Carta.class
-Ruta/Jugador.class
-Ruta/CartasProblema.class
+Modelo/Carta.class
+Modelo/CartaProblema.class
+Modelo/CartaDistancia.class
+Modelo/CartaSolucion.class
+Vista/Vista.class
+Controlador/Controlador.class
+Modelo/CartaSeguridad.class
 Ruta/TipoCarta.class
-Ruta/Mazo.class
