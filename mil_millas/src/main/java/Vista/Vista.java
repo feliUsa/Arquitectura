@@ -8,13 +8,19 @@ package Vista;
  *
  * @author isabella
  */
+import Controlador.Controlador;
 import Modelo.Carta;
 import java.util.List;
 
 public class Vista {
+    private Controlador controlador;
+    
     public void mostrarCartas(List<Carta> cartas) {
         for (Carta carta : cartas) {
             System.out.println(carta.getNombre());
         }
     }
+    
 }
+    
+  

@@ -9,11 +9,8 @@ package Main;
  * @author isabella
  */
 import Controlador.Controlador;
-import Modelo.Carta;
 import Modelo.Juego;
-import Modelo.Jugador;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -24,7 +21,9 @@ public class Main {
         controlador.llenarMazoSolucion();
 
         Juego juego = new Juego(controlador);
-        juego.jugar(); // Iniciar el juego y seleccionar cartas aleatorias
+        juego.iniciarJuego(); // Iniciar el juego y seleccionar cartas aleatorias
     }
 }
 
+
+        

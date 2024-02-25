@@ -20,14 +20,37 @@ public class Juego {
 
     public Juego(Controlador controlador) {
         this.controlador = controlador;
+        this.numeroJugadores = numeroJugadores;
         jugadores = new ArrayList<>();
     }
+    
+    public void iniciarJuego() {
+    System.out.println("¡Bienvenido al juego de ruta!");
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("¿Desea jugar en modo multijugador? (si/no)");
+    String opcion = scanner.nextLine();
+
+    if (opcion.equalsIgnoreCase("si")) {
+        seleccionarNumeroJugadores();
+    } else if (opcion.equalsIgnoreCase("no")) {
+        // Si elige un jugador, el sistema jugará automáticamente
+        numeroJugadores = 1;
+    } else {
+        System.out.println("Opción no válida. Saliendo del juego.");
+        return;
+    }
+
+    jugar(); // Aquí ya se ha seleccionado el número de jugadores, no es necesario volver a preguntar
+}
+
 
     public void jugar() {
-        seleccionarNumeroJugadores();
+    // Ya no es necesario volver a preguntar por el número de jugadores aquí
         solicitarNombresJugadores();
         repartirCartasIniciales();
         generarMazoRestante();
+
         
     }
     
@@ -48,16 +71,14 @@ public class Juego {
     }
 
     
-    
     private void repartirCartasIniciales() {
-        Scanner scanner = new Scanner(System.in); // Agregar esta línea
         for (Jugador jugador : jugadores) {
             List<Carta> cartasSeleccionadas = jugador.seleccionarCartasAleatorias(6);
             System.out.println("Cartas seleccionadas para " + jugador.getNombre() + ":");
-            for (Carta carta : cartasSeleccionadas) {
-                System.out.println(carta.getNombre());
-            }
-            jugador.setCartasEnMano(cartasSeleccionadas);
+        for (Carta carta : cartasSeleccionadas) {
+            System.out.println(carta.getNombre());
+        }
+        jugador.setCartasEnMano(cartasSeleccionadas);
         }
     }
         
@@ -71,14 +92,18 @@ public class Juego {
         }
         controlador.setMazoRestante(mazoRestante);
     }
+
     
-    
-    private void seleccionarNumeroJugadores() {
-        Scanner scanner = new Scanner(System.in);
-        do {
-            System.out.println("¿Cuántas personas van a jugar? (2, 4 o 6)");
-            numeroJugadores = scanner.nextInt();
-        } while (numeroJugadores != 2 && numeroJugadores != 4 && numeroJugadores != 6);
-        scanner.nextLine(); // Consumir el salto de línea
+    public void seleccionarNumeroJugadores() {
+    Scanner scanner = new Scanner(System.in);
+    do {
+        System.out.println("¿Cuántas personas van a jugar? (2, 4 o 6)");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Por favor, ingrese un número válido.");
+            scanner.next(); // Consumir la entrada inválida
+        }
+        numeroJugadores = scanner.nextInt();
+    } while (numeroJugadores != 2 && numeroJugadores != 4 && numeroJugadores != 6);
+    scanner.nextLine(); // Consumir el salto de línea
     }
 }
