@@ -1,0 +1,12 @@
+Modelo/Carta.class
+Modelo/CartaProblema.class
+Modelo/FabricaCartasStandard.class
+Modelo/CartaDistancia.class
+Main/Main.class
+Modelo/CartaSolucion.class
+Modelo/Jugador.class
+Vista/Vista.class
+Controlador/Controlador.class
+Modelo/CartaSeguridad.class
+Modelo/Juego.class
+Modelo/FabricaCartas.class
