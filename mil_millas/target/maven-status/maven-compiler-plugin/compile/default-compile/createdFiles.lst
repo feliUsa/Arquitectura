@@ -11,7 +11,9 @@ Modelo/CartasEnMano.class
 Modelo/Juego.class
 Modelo/FabricaCartasStandard.class
 Main/Main.class
+Modelo/AdaptadorJuego.class
 Vista/JFJuegoPrincipal$1.class
+Modelo/InterfazJuego.class
 Modelo/CartaSeguridad.class
 Modelo/FabricaCartas.class
 Vista/JFJuegoPrincipal$2.class

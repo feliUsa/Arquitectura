@@ -9,6 +9,7 @@ package Main;
  * @author isabella
  */
 import Controlador.Controlador;
+import Modelo.AdaptadorJuego;
 import Modelo.Juego;
 
 
@@ -22,6 +23,12 @@ public class Main {
 
         Juego juego = new Juego(controlador);
         juego.iniciarJuego(); // Iniciar el juego y seleccionar cartas aleatorias
+        
+        // Crear el adaptador y realizar la jugada
+        //AdaptadorJuego adaptador = new AdaptadorJuego(juego);
+       // adaptador.realizarJugada();
+    
+    
     }
 }
 

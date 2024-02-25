@@ -46,12 +46,10 @@ public class Juego {
 
 
     public void jugar() {
-    // Ya no es necesario volver a preguntar por el número de jugadores aquí
         solicitarNombresJugadores();
         repartirCartasIniciales();
         generarMazoRestante();
-
-        
+               
     }
     
     private void solicitarNombresJugadores() {
