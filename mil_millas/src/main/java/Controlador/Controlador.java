@@ -13,20 +13,38 @@ import Modelo.FabricaCartas;
 import Modelo.FabricaCartasStandard;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Controlador {
     private List<Carta> mazo;
+    private List<Carta> mazoRestante;
 
     public Controlador() {
         mazo = new ArrayList<>();
     }
-
+  
     public void agregarCarta(Carta carta) {
         mazo.add(carta);
+    }
+    
+    public List<Carta> getCartasRestantes() {
+        return mazoRestante;
+    }
+    
+    public void setMazoRestante(List<Carta> mazoRestante) {
+        this.mazoRestante = mazoRestante;
     }
 
     public List<Carta> obtenerMazo() {
         return mazo;
+    }
+    
+    public Carta obtenerCartaAleatoriaRestante() {
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(mazoRestante.size());
+        Carta carta = mazoRestante.get(indiceAleatorio);
+        mazoRestante.remove(indiceAleatorio);
+        return carta;
     }
     
     // Método para llenar el mazo con cartas de distancia específicas
