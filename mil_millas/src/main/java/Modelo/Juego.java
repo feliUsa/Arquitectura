@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
+    //Lista guarda los nombres de los jugadores
     private List<Jugador> jugadores;
     private Controlador controlador;
     private int numeroJugadores;
@@ -60,11 +61,6 @@ public class Juego {
             Jugador jugador = new Jugador(nombreJugador, controlador);
             jugadores.add(jugador);
 
-            List<Carta> cartasSeleccionadas = jugador.seleccionarCartasAleatorias(6);
-            System.out.println("Cartas seleccionadas para " + nombreJugador + ":");
-            for (Carta carta : cartasSeleccionadas) {
-                System.out.println(carta.getNombre());
-            }
         }
     }
 

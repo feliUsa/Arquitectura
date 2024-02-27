@@ -30,8 +30,7 @@ public class JFTablero extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(500, 500));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/TABLERO.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images_fondos/TABLERO.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
