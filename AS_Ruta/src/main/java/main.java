@@ -1,8 +1,8 @@
 import java.util.List;
 
 import Controller.controller;
+import Controller.playerFactory;
 import Model.Jugador;
-import Model.playerFactory;
 
 public class main {
     public static void main(String[] args) {

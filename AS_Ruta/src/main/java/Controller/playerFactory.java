@@ -1,8 +1,10 @@
-package Model;
+package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import Model.Jugador;
 
 public class playerFactory {
 
