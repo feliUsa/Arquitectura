@@ -3,10 +3,12 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Jugador {
 
     private String name;
     private List<Object> playerObjects;
+    private List<Object> hand;
     boolean stop = true;
     int velMax = 200;
     boolean combustible = true;
@@ -23,6 +25,7 @@ public class Jugador {
         this.pinchazo = pinchazo;
         this.distancia = distancia;
         playerObjects = new ArrayList<>();
+        hand = new ArrayList<>();
     }
 
     public void addObject(Object obj) {
@@ -31,6 +34,10 @@ public class Jugador {
 
     public List<Object> getPlayerObjects() {
         return playerObjects;
+    }
+
+    public void addCard(Carta card) {
+        hand.add(card);
     }
 
     public String getName() {

@@ -22,7 +22,6 @@ public class playerFactory {
             Jugador player = new Jugador(playerName, true, 200, true, false, false, 0);
             players.add(player);
         }
-        System.out.println(players);
 
         scanner.close();
         return players;

@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Carta;
 import Model.choque;
 import Model.distance100;
 import Model.distance200;
@@ -24,8 +25,8 @@ import Model.taller;
 import Model.velMax50;
 
 public class cardFactory {
-    public List<Object> createCards() {
-        List<Object> objetos = new ArrayList<>();
+    public List<Carta> createCards() {
+        List<Carta> objetos = new ArrayList<>();
         
         // Carta Distacia 25
         objetos = new ArrayList<>();
@@ -126,9 +127,7 @@ public class cardFactory {
         for (int i = 0; i < 6; i++) {
             repuesto repuesto = new repuesto();
             objetos.add(repuesto);
-        }
-
-        System.out.println(objetos);   
+        } 
         
         return objetos;
     }
