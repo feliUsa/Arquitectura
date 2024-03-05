@@ -1,7 +1,12 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Jugador {
 
+    private String name;
+    private List<Object> playerObjects;
     boolean stop = true;
     int velMax = 200;
     boolean combustible = true;
@@ -9,13 +14,27 @@ public class Jugador {
     boolean pinchazo = false;
     int distancia = 0;
 
-    public Jugador(boolean stop, int velMax, boolean combustible, boolean choque, boolean pinchazo, int distancia) {
+    public Jugador(String name, boolean stop, int velMax, boolean combustible, boolean choque, boolean pinchazo, int distancia) {
+        this.name = name;
         this.stop = stop;
         this.velMax = velMax;
         this.combustible = combustible;
         this.choque = choque;
         this.pinchazo = pinchazo;
         this.distancia = distancia;
+        playerObjects = new ArrayList<>();
+    }
+
+    public void addObject(Object obj) {
+        playerObjects.add(obj);
+    }
+
+    public List<Object> getPlayerObjects() {
+        return playerObjects;
+    }
+
+    public String getName() {
+        return name;
     }
 
     // crear metodo para recibir la carta

@@ -1,6 +1,6 @@
 package Model;
 
-public class Stop implements Carta {
+public class stop implements Carta {
 
     @Override
     public void accion(Jugador jugador) {
