@@ -8,4 +8,10 @@ public class repuesto implements Carta{
     public void accion(Jugador jugador) {
         jugador.setPinchazo(false);
     }
+    
+    private String Url = "com/mycompany/ruta/Resources/repuesto.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

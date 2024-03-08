@@ -9,4 +9,9 @@ public class prioridadPaso implements Carta{
         System.out.println("metodo no implementado aun");
     }
 
+    private String Url = "com/mycompany/ruta/Resources/prioridadPaso.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

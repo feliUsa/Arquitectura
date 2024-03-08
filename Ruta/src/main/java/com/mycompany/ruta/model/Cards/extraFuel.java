@@ -9,4 +9,9 @@ public class extraFuel implements Carta{
         System.out.println("metodo aun no implementado");
     }
 
+    private String Url = "com/mycompany/ruta/Resources/extraFuel.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

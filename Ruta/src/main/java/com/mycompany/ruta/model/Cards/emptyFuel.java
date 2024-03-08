@@ -8,5 +8,11 @@ public class emptyFuel implements Carta {
     public void accion(Jugador jugador) {
         jugador.setCombustible(false);
     }
+    
+    private String Url = "com/mycompany/ruta/Resources/emptyFuel.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 
 }

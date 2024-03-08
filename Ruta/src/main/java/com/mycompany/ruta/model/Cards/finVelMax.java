@@ -9,4 +9,9 @@ public class finVelMax implements Carta{
         jugador.setVelMax(200);
     }
 
+    private String Url = "com/mycompany/ruta/Resources/finVelMax.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

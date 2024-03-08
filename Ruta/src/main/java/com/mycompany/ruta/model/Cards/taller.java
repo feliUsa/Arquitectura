@@ -8,4 +8,10 @@ public class taller implements Carta {
     public void accion(Jugador jugador) {
         jugador.setChoque(false);
     }
+    
+    private String Url = "com/mycompany/ruta/Resources/taller.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

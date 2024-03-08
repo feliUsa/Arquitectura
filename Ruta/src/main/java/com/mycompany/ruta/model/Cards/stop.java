@@ -8,4 +8,10 @@ public class stop implements Carta {
     public void accion(Jugador jugador) {
         jugador.setStop(false);
     }
+    
+    private String Url = "com/mycompany/ruta/Resources/stop.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

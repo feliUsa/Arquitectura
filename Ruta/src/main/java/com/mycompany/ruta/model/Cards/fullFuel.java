@@ -9,4 +9,9 @@ public class fullFuel implements Carta{
         jugador.setCombustible(true);
     }
 
+    private String Url = "com/mycompany/ruta/Resources/.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

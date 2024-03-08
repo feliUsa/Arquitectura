@@ -22,7 +22,7 @@ import com.mycompany.ruta.model.Cards.steelWheels;
 import com.mycompany.ruta.model.Cards.steeringWheelAce;
 import com.mycompany.ruta.model.Cards.stop;
 import com.mycompany.ruta.model.Cards.taller;
-import com.mycompany.ruta.model.Cards.velMax50;
+import com.mycompany.ruta.model.Cards.velMax;
 
 public class cardFactory {
     public List<Carta> createCards() {
@@ -67,7 +67,7 @@ public class cardFactory {
 
         // Carta Distacia Velocidad Maxima
         for (int i = 0; i < 4; i++) {
-            velMax50 velMax50 = new velMax50();
+            velMax velMax50 = new velMax();
             objetos.add(velMax50);
         }
 

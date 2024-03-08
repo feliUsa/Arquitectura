@@ -8,4 +8,10 @@ public class distance75 implements Carta{
     public void accion(Jugador jugador) {
         jugador.sumarDistancia(75);
     }
+    
+    private String Url = "com/mycompany/ruta/Resources/distance75.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

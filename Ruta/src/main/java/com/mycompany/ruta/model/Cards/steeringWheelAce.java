@@ -9,4 +9,9 @@ public class steeringWheelAce implements Carta{
         System.out.println("metodo aun no implementado");
     }
 
+    private String Url = "com/mycompany/ruta/Resources/steeringWheel.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

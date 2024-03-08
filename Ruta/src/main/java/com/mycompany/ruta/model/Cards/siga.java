@@ -9,4 +9,9 @@ public class siga implements Carta{
         jugador.setStop(false);
     }
     
+    private String Url = "com/mycompany/ruta/Resources/siga.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 }

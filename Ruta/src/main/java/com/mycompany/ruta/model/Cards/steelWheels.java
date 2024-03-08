@@ -8,5 +8,11 @@ public class steelWheels implements Carta{
     public void accion(Jugador jugador) {
         System.out.println("metodo aun no implementado");
     }
+    
+    private String Url = "com/mycompany/ruta/Resources/steelWheels.png";
+    
+    public String getUrl() {
+        return Url;
+    }
 
 }

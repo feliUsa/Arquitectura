@@ -10,7 +10,7 @@ public class Jugador {
 
     private String name;
     private List<Object> playerObjects;
-    private List<Object> hand;
+    private List<Carta> hand;
     boolean stop = true;
     int velMax = 200;
     boolean combustible = true;
@@ -102,5 +102,16 @@ public class Jugador {
     public void jugarCartaOponente(Jugador oponente, Carta carta){
         oponente.recibirCarta(carta);
     }
-
+    
+    public Carta obtenerPrimerObjeto() {
+        if (hand != null && !hand.isEmpty()) {
+            return hand.get(0); // Retorna el primer objeto de la lista
+        } else {
+            return null; // Retorna null si la lista está vacía
+        }
+    }
+    
+    public List<Carta> getHand(){
+        return hand;
+    }
 }

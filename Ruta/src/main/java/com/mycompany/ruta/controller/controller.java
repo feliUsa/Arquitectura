@@ -7,8 +7,8 @@ import com.mycompany.ruta.model.cardDealer;
 import com.mycompany.ruta.model.cardFactory;
 import com.mycompany.ruta.model.playerFactory;
 import com.mycompany.ruta.model.shuffler;
-import com.mycompany.ruta.model.Cards.pinchazo;
 import com.mycompany.ruta.model.Cards.Carta;
+import com.mycompany.ruta.view.window;
 
 
 public class controller {
@@ -17,11 +17,15 @@ public class controller {
     
     public controller() {
 
-        
+        //Creacion de vista
+        window Gui = new window();
+        Gui.setVisible(true);
+        Gui.setLocationRelativeTo(null);
+
         //Creacion de las Cartas
         cardFactory cardFactory = new cardFactory();
         objetos = cardFactory.createCards();
-        // System.out.println(objetos + " Cartas desde el controlador");
+        System.out.println(objetos + " Cartas desde el controlador");   
 
         //Creacion de los Jugadores
         playerFactory playerFactory = new playerFactory();
@@ -37,7 +41,7 @@ public class controller {
         // System.out.println(cardsShufled + "cartas mezcladas desde el controlador. Hay " + cardsShufled.size() + " cartas");
     
         //Repartir Cartas
-        cardDealer.dealCards(jugadores, cardsShufled);
+        cardDealer.dealCards(jugadores, objetos);
 
 
         System.out.println("TTTTT  EEEEE  SSSSS   TTTTT   OO ");
@@ -46,9 +50,11 @@ public class controller {
         System.out.println("  T    E          S     T    O  O");
         System.out.println("  T    EEEEE  SSSSS     T     OO");
         //TESTS
-        pinchazo pinchazoTest = new pinchazo();
-        //jugadores.get(0).jugarCartaOponente(jugadores.get(1), pinchazoTest);
-        System.out.println("el atributo pinchazo se encuentra del jugador: " +jugadores.get(1).getName() + "Se encuentra: " + jugadores.get(1).isPinchazo());
+        
+        Jugador objeto1 = jugadores.get(0);
+        Carta carta1 = objeto1.;
+        System.out.println(carta1);
+        //Gui.establecerIconoEnBoton(card1,objeto1.);
+        
     }
-
 }
