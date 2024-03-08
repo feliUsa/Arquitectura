@@ -4,12 +4,12 @@ import com.mycompany.ruta.model.Jugador;
 
 public class stop implements Carta {
 
+    private String Url = "Ruta/src/main/java/com/mycompany/ruta/resources/images/stop.png";
+    
     @Override
     public void accion(Jugador jugador) {
         jugador.setStop(false);
     }
-    
-    private String Url = "com/mycompany/ruta/Resources/stop.png";
     
     public String getUrl() {
         return Url;

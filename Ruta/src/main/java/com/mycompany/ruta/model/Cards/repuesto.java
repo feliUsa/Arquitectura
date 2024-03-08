@@ -4,12 +4,12 @@ import com.mycompany.ruta.model.Jugador;
 
 public class repuesto implements Carta{
 
+    private String Url = "Ruta/src/main/java/com/mycompany/ruta/resources/images/repuesto.png";
+    
     @Override
     public void accion(Jugador jugador) {
         jugador.setPinchazo(false);
     }
-    
-    private String Url = "com/mycompany/ruta/Resources/repuesto.png";
     
     public String getUrl() {
         return Url;

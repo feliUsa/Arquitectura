@@ -4,13 +4,13 @@ import com.mycompany.ruta.model.Jugador;
 
 public class velMax implements Carta{
 
+    private String Url = "Ruta/src/main/java/com/mycompany/ruta1/resources/images/velMax.png";
+    
     @Override
     public void accion(Jugador jugador) {
         jugador.setVelMax(50);
     }
 
-    private String Url = "com/mycompany/ruta/Resources/velMax.png";
-    
     public String getUrl() {
         return Url;
     }

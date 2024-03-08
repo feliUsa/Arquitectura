@@ -4,7 +4,7 @@ import com.mycompany.ruta.model.Jugador;
 
 public class distance200 implements Carta{
 
-    public String Url = "com/mycompany/ruta/Resources/distance200.png";
+    public String Url = "Ruta/src/main/java/com/mycompany/ruta/resources/images/distance200.png";
     
     @Override
     public void accion(Jugador jugador) {

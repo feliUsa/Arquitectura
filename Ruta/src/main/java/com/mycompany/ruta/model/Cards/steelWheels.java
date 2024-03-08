@@ -4,12 +4,12 @@ import com.mycompany.ruta.model.Jugador;
 
 public class steelWheels implements Carta{
 
+    private String Url = "Ruta/src/main/java/com/mycompany/ruta/resources/images/steelWheels.png";
+    
     @Override
     public void accion(Jugador jugador) {
         System.out.println("metodo aun no implementado");
     }
-    
-    private String Url = "com/mycompany/ruta/Resources/steelWheels.png";
     
     public String getUrl() {
         return Url;

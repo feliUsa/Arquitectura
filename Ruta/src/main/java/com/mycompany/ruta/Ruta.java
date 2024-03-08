@@ -4,7 +4,10 @@
 
 package com.mycompany.ruta;
 
+import javax.swing.SwingUtilities;
+
 import com.mycompany.ruta.controller.controller;
+import com.mycompany.ruta.view.View;
 
 /**
  *
@@ -13,6 +16,10 @@ import com.mycompany.ruta.controller.controller;
 public class Ruta {
 
     public static void main(String[] args) {
-        controller controlador = new controller();
+
+        SwingUtilities.invokeLater(() -> {
+            View vista = new View();
+            controller controlador = new controller(vista);
+        });
     }
 }

@@ -4,12 +4,12 @@ import com.mycompany.ruta.model.Jugador;
 
 public class fullFuel implements Carta{
 
+    private String Url = "Ruta/src/main/java/com/mycompany/ruta/resources/images/pinchazo.png";
+    
     @Override
     public void accion(Jugador jugador) {
         jugador.setCombustible(true);
     }
-
-    private String Url = "com/mycompany/ruta/Resources/.png";
     
     public String getUrl() {
         return Url;
