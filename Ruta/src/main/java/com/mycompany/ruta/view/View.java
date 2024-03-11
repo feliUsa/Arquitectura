@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.awt.image.BufferedImage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class View extends JFrame {
@@ -30,8 +32,19 @@ public class View extends JFrame {
         botones = new JButton[7]; // Arreglo para almacenar los botones
         for (int i = 0; i < 7; i++) {
             botones[i] = new JButton(); // Crear botón sin texto
-            botones[i].setPreferredSize(new Dimension(100, 100)); 
+            botones[i].setPreferredSize(new Dimension(100, 100));
             panelInferior.add(botones[i]);
+
+            final int buttonIndex = i; // Se necesita una variable final para usar en ActionListener
+
+            // Agregar ActionListener al botón
+            botones[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Aquí puedes ejecutar la acción deseada cuando se presione el botón
+                    System.out.println("Se presionó el botón " + (buttonIndex + 1));
+                }
+            });
         }
 
         // Configurar el contenedor principal con GridBagLayout

@@ -2,7 +2,6 @@ package com.mycompany.ruta.controller;
 
 import java.util.List;
 
-import javax.swing.SwingUtilities;
 
 import com.mycompany.ruta.model.Jugador;
 import com.mycompany.ruta.model.cardDealer;
@@ -10,7 +9,6 @@ import com.mycompany.ruta.model.cardFactory;
 import com.mycompany.ruta.model.playerFactory;
 import com.mycompany.ruta.model.shuffler;
 import com.mycompany.ruta.model.Cards.Carta;
-import com.mycompany.ruta.model.getUrl;
 import com.mycompany.ruta.view.View;
 
 public class controller {
@@ -25,7 +23,7 @@ public class controller {
         // Creacion de las Cartas
         cardFactory cardFactory = new cardFactory();
         objetos = cardFactory.createCards();
-        System.out.println(objetos + " Cartas desde el controlador");
+        // System.out.println(objetos + " Cartas desde el controlador");
 
         // Creacion de los Jugadores
         playerFactory playerFactory = new playerFactory();
@@ -52,8 +50,10 @@ public class controller {
         // TESTS
 
         List<Carta> mano = jugadores.get(0).getHand();
+        System.out.println(mano + "Cartas del jugador");
         procesarCartas(mano);
 
+        
         // Creacion de vista
 
     }
