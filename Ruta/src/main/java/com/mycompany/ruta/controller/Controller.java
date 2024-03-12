@@ -9,7 +9,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.mycompany.ruta.model.Jugador;
 import com.mycompany.ruta.model.cardDealer;
 import com.mycompany.ruta.model.cardFactory;
@@ -18,25 +17,23 @@ import com.mycompany.ruta.model.shuffler;
 import com.mycompany.ruta.model.Cards.Carta;
 import com.mycompany.ruta.view.View;
 
-public class controller {
+public class Controller {
 
     private List<Carta> objetos;
-
+    private View view;
+    private List<Jugador> jugadores;
     private ServerSocket serverSocket;
     private List<Socket> clients;
-    private View view;
     private int maxPlayers;
     private int currentPlayerCount;
 
-    public controller(View view, int maxPlayers) {
+    public Controller(View view) {
 
         this.view = view;
 
         this.clients = new ArrayList<>();
         this.maxPlayers = maxPlayers;
         this.currentPlayerCount = 0;
-
-        startServer(12345);
 
         // Creacion de las Cartas
         cardFactory cardFactory = new cardFactory();
@@ -45,7 +42,10 @@ public class controller {
 
         // Creacion de los Jugadores
         playerFactory playerFactory = new playerFactory();
-        List<Jugador> jugadores = playerFactory.createPlayers();
+        List<Jugador> jugadores1 = playerFactory.createPlayers();
+        this.jugadores = jugadores1;
+        System.out.println(jugadores.size());
+
         System.out.println("\nJugadores creados:");
         for (Jugador jugador : jugadores) {
             System.out.println("Nombre: " + jugador.getName());
@@ -60,7 +60,11 @@ public class controller {
         // Repartir Cartas
         cardDealer.dealCards(jugadores, objetos);
 
-        test();
+        System.out.println("TTTTT  EEEEE  SSSSS   TTTTT   OO ");
+        System.out.println("  T    E      S         T    O  O");
+        System.out.println("  T    EEE     SSS      T    O  O");
+        System.out.println("  T    E          S     T    O  O");
+        System.out.println("  T    EEEEE  SSSSS     T     OO");
         // TESTS
 
         List<Carta> mano = jugadores.get(0).getHand();
@@ -68,6 +72,7 @@ public class controller {
         procesarCartas(mano);
 
         // Creacion de vista
+
     }
 
     public void procesarCartas(List<Carta> listaCartas) {
@@ -90,52 +95,68 @@ public class controller {
     }
 
 
-
-// ---------------------------Sockets-------------------------------------
-
-    
-    public void startServer(int port) {
-        try {
-            serverSocket = new ServerSocket(port);
-            System.out.println("Server started on port " + port);
-            acceptClients();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
 
-    private void acceptClients() {
-        playerFactory playerFactory = new playerFactory();
-        while (currentPlayerCount < maxPlayers) {
-            try {
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void iniciarServidor() {
+        try {
+            serverSocket = new ServerSocket(12345);
+            currentPlayerCount++;
+            System.out.println("Esperando jugadores...");
+
+            while (currentPlayerCount < maxPlayers) {
                 Socket clientSocket = serverSocket.accept();
                 clients.add(clientSocket);
                 currentPlayerCount++;
-                System.out.println("Player " + currentPlayerCount + " connected.");
-                if (currentPlayerCount == 1) {
-                    // El primer jugador que se conecta será el servidor
-                    System.out.println("You are the server.");
-                    List<Jugador> jugadores = playerFactory.createPlayers();
-                    for (Jugador jugador : jugadores) {
-                        System.out.println("Nombre: " + jugador.getName());
-                    }
-                } else {
-                    // Si hay más de un jugador, los otros serán clientes
-                    System.out.println("You are a client.");
-                    List<Jugador> jugadores = playerFactory.createPlayers();
-                    for (Jugador jugador : jugadores) {
-                        System.out.println("Nombre: " + jugador.getName());
-                    }
+                System.out.println("Nuevo jugador conectado. Total de jugadores: " + currentPlayerCount);
+            }
+
+            System.out.println("Número máximo de jugadores alcanzado. Iniciando partida...");
+
+            // Empieza el juego aquí
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (serverSocket != null && !serverSocket.isClosed()) {
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    public void connectToServer(String serverAddress, int serverPort) {
+        Socket socket = null;
+        PrintWriter out = null;
+        BufferedReader in = null;
+
+        try {
+            socket = new Socket(serverAddress, serverPort);
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            // Maneja la comunicación con el servidor aquí
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) out.close();
+                if (in != null) in.close();
+                if (socket != null) socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println("Max players reached. Game starting...");
-        // Aquí puedes iniciar el juego
     }
-
-
 
     public void test(){
         System.out.println("TTTTT  EEEEE  SSSSS   TTTTT   OO ");
@@ -144,4 +165,5 @@ public class controller {
         System.out.println("  T    E          S     T    O  O");
         System.out.println("  T    EEEEE  SSSSS     T     OO");
     }
+
 }
