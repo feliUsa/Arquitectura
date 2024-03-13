@@ -1,11 +1,6 @@
 package com.mycompany.ruta.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,12 +18,7 @@ public class Controller {
     // Atributos para iniciar el juego
     private List<Carta> objetos;
     private View view;
-    private List<Jugador> jugadores;
-
-    //Atributos para iniciar sockets
-    private ServerSocket serverSocket;
-    private List<Socket> clientes;
-
+    private List<Jugador> jugadores = new ArrayList<>(); 
 
     public Controller(View view) {
         this.view = view;
@@ -52,6 +42,7 @@ public class Controller {
             System.out.println("Error: view no está inicializado correctamente");
         }
     }
+    
 
 
     public void setJugadores(List<Jugador> jugadores) {
@@ -62,10 +53,13 @@ public class Controller {
         return jugadores;
     }
 
+    public int getMaximoP(int mp){
+        return mp;
+    }
 
-    private static void runServer(Controller controlador) {
+
+    private static void runServer(Controller controlador, int maxPlayers) {
         int port = 12345; // Cambiar según sea necesario
-        int maxPlayers = 4; // Cambiar según sea necesario
             Server server = new Server(port, maxPlayers, controlador); // Pasar el controlador al constructor
             server.start();
         
@@ -74,26 +68,16 @@ public class Controller {
     private static void runClient(Controller controlador) {
         String serverAddress = "127.0.0.1"; // Cambiar según sea necesario
         int port = 12345; // Cambiar según sea necesario
-
+    
         try {
             Client cliente = new Client(serverAddress, port, controlador); // Pasar el controlador al constructor
-
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Como es tu nombre:");
-            String playerName = scanner.nextLine();
-
-            cliente.enviarNombre(playerName);
-
-            String serverResponse = cliente.recibirMensaje();
-            System.out.println("Server response " + serverResponse);
-
-            cliente.cerrar();
+            System.out.println("CLiente" + cliente +" conectado");
         } catch (IOException e) {
             System.err.println("Error en conexion al servidor " + e.getMessage());
-        }
+        } 
     }
 
-    public void test(){
+    public static void test(){
         System.out.println("TTTTT  EEEEE  SSSSS   TTTTT   OO ");
         System.out.println("  T    E      S         T    O  O");
         System.out.println("  T    EEE     SSS      T    O  O");
@@ -103,17 +87,45 @@ public class Controller {
 
 
     public void iniciarJuego(){
+
+        playerFactory playerFactory = new playerFactory();
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("¿Desea iniciar como servidor o como cliente?");
+        System.out.println("1. Servidor");
+        System.out.println("2. Cliente");
+        int opcion = scanner.nextInt();
+    
+        if (opcion == 1) {
+            playerFactory.createPlayer(jugadores);
+            
+            // Pedir el número de jugadores a jugar, incluyendo al servidor
+            System.out.println("Número de jugadores a jugar (incluyendo al servidor):");
+            int maxPlayers = scanner.nextInt();
+            scanner.nextLine(); // Consumir nueva línea después de nextInt()
+            
+            // Iniciar el servidor y esperar jugadores hasta alcanzar el número máximo
+            runServer(this, maxPlayers);
+        } else if (opcion == 2) {
+            runClient(this);
+            playerFactory.createPlayer(jugadores);
+        } else {
+            System.out.println("Opción no válida.");
+        }
+
         // Creacion de las Cartas
         cardFactory cardFactory = new cardFactory();
         objetos = cardFactory.createCards();
         // System.out.println(objetos + " Cartas desde el controlador");
 
         // Creacion de los Jugadores
-        playerFactory playerFactory = new playerFactory();
-        List<Jugador> jugadores1 = playerFactory.createPlayers();
-        this.jugadores = jugadores1;
-        System.out.println(jugadores.size());
+        /*List<Jugador> jugadores1 = playerFactory.createPlayers(maxPlayers);
+        this.jugadores = jugadores1;*/
+        System.out.println("Cantidad jugadores " + jugadores.size());
+
+        test();
+        test();
+        test();
 
         System.out.println("\nJugadores creados:");
         for (Jugador jugador : jugadores) {
@@ -129,20 +141,6 @@ public class Controller {
         List<Carta> mano = jugadores.get(0).getHand();
         System.out.println(mano + "Cartas del jugador");
         procesarCartas(mano);
-
-        System.out.println("¿Desea iniciar como servidor o como cliente?");
-        System.out.println("1. Servidor");
-        System.out.println("2. Cliente");
-        int opcion = scanner.nextInt();
-    
-        if (opcion == 1) {
-            runServer(this);
-        } else if (opcion == 2) {
-            runClient(this);
-        } else {
-            System.out.println("Opción no válida.");
-        }
-
 
     }
 
