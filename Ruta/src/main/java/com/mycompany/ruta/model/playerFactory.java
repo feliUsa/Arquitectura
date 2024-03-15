@@ -1,15 +1,18 @@
 package com.mycompany.ruta.model;
-
-import java.util.*;
+import java.util.Scanner;
 
 public class playerFactory {
-    private Scanner s = new Scanner(System.in);
+    public static Jugador createPlayer() {
 
-    public void createPlayer(List<Jugador> players) {
-        System.out.println("Nombre del nuevo jugador:");
-        String playerName = s.nextLine();
+        Scanner p = new Scanner(System.in);
+        
+        System.out.println("Nombre jugador nuevo");
+        String playerName = p.nextLine();
+
         Jugador player = new Jugador(playerName, true, 200, true, false, false, 0);
-        players.add(player);
+        System.out.println("\n\nJugador " + playerName + " creado: " + player.toString()+ "\n\n");
+        return player;
     }
+
 }
 

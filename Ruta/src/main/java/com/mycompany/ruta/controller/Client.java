@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+
+
 public class Client {
     private Socket socket;
     private BufferedReader input;
@@ -17,12 +19,15 @@ public class Client {
         this.socket = new Socket(serverAddress, port);
         this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.output = new PrintWriter(socket.getOutputStream(), true);
-        this.controller = controller; // Asignar el controlador recibido
+        this.controller = controller;
+
+        output.println("CLIENTE_CONECTADO");
     }
 
-    public void enviarNombre(String nombre) {
-        output.println(nombre);
+    public void enviarMensaje(String mensaje) {
+        output.println(mensaje);
     }
+    
 
     public String recibirMensaje() throws IOException {
         return input.readLine();
@@ -31,4 +36,5 @@ public class Client {
     public void cerrar() throws IOException {
         socket.close();
     }
+
 }

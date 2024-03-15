@@ -3,45 +3,51 @@ package com.mycompany.ruta.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mycompany.ruta.model.Jugador;
+import com.mycompany.ruta.model.playerFactory;
+
 
 public class Server {
     private int port;
     private int maxPlayers;
-    private List<Jugador> jugadores;
     private Controller controlador;
+
 
     public Server(int port, int maxPlayers, Controller controlador) {
         this.port = port;
         this.maxPlayers = maxPlayers;
         this.controlador = controlador;
-        this.jugadores = new ArrayList<>();
     }
 
     public void start() {
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Servidor iniciado en el puerto " + port + "\nMaximo Jugadores: " + maxPlayers);
+        Jugador server = playerFactory.createPlayer();
+        controlador.addJugador(server);
     
-            int jugadorActual = 1; // Contador de jugadores conectados
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Servidor iniciado en el puerto " + port + "\nMaximo Jugadores: " + maxPlayers + "\n\n");
+    
+            int jugadorActual = 1;
             while (jugadorActual < maxPlayers) {
                 System.out.print("Esperando jugadores...");
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Jugador conectado: " + clientSocket.getInetAddress().getHostAddress());
+                System.out.println("\nJugador conectado: " + clientSocket.getInetAddress().getHostAddress());
     
-                jugadorActual++; // Incrementar contador de jugadores conectados
+                Jugador nuevoJugador = playerFactory.createPlayer();
+                controlador.addJugador(nuevoJugador);    
+                jugadorActual++;
             }
     
-            // Cuando se alcanza el número máximo de jugadores, imprimir un mensaje y continuar
             System.out.println("Número máximo de jugadores alcanzado. Continuando...");
         } catch (IOException e) {
             System.err.println("Error starting server: " + e.getMessage());
         }
     }
     
-
+    
 }

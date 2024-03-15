@@ -114,4 +114,8 @@ public class Jugador {
     public List<Carta> getHand(){
         return hand;
     }
+
+    public String toString(){
+        return "Jugador "+name+" con variables :" + stop + " " + velMax + " " +  combustible + " " + choque + " " + pinchazo + " " + distancia;
+    }
 }
