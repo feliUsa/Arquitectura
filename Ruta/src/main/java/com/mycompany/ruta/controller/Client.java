@@ -21,7 +21,6 @@ public class Client {
         this.output = new PrintWriter(socket.getOutputStream(), true);
         this.controller = controller;
 
-        output.println("CLIENTE_CONECTADO");
     }
 
     public void enviarMensaje(String mensaje) {

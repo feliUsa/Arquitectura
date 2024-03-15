@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import com.mycompany.ruta.model.playerFactory;
 
 public class Server {
     private int port;
+    private Socket socket;
     private int maxPlayers;
     private Controller controlador;
 
@@ -37,6 +39,20 @@ public class Server {
                 System.out.print("Esperando jugadores...");
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("\nJugador conectado: " + clientSocket.getInetAddress().getHostAddress());
+
+                Thread thread = new Thread(() -> {
+                    try {
+                        BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                        String mensaje;
+                        while ((mensaje = input.readLine()) != null) {
+                            // Procesa el mensaje recibido del cliente (por ejemplo, imprime en la consola)
+                            System.out.println(mensaje);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                thread.start();
     
                 Jugador nuevoJugador = playerFactory.createPlayer();
                 controlador.addJugador(nuevoJugador);    
@@ -49,5 +65,8 @@ public class Server {
         }
     }
     
+    public void enviarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
     
 }

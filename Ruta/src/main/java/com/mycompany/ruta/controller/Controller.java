@@ -20,9 +20,17 @@ public class Controller {
     private View view;
     private List<Jugador> jugadores = new ArrayList<>(); 
     playerFactory playerFactory = new playerFactory();
+    private Client client;
+
+
 
     public Controller(View view) {
         this.view = view;
+        this.client = null;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public void addJugador(Jugador jugador) {
@@ -71,19 +79,41 @@ public class Controller {
         int port = 12345; // Cambiar según sea necesario
         Server server = new Server(port, maxPlayers, controlador); // Pasar la instancia de playerFactory
         server.start();
+    
+        // Crear y establecer el cliente en el controlador
+        try {
+            Client cliente = new Client("192.168.0.4", port, controlador); // Crear instancia del cliente
+            controlador.setClient(cliente); // Establecer el cliente en el controlador
+            System.out.println("Cliente " + cliente + " conectado");
+        } catch (IOException e) {
+            System.err.println("Error en conexión al servidor " + e.getMessage());
+        }
     }
+    
 
     private static void runClient(Controller controlador) {
         String serverAddress = "192.168.0.4"; // Cambiar según sea necesario
         int port = 12345; // Cambiar según sea necesario
     
         try {
-            Client cliente = new Client(serverAddress, port, controlador); // Pasar la instancia de playerFactory
+            Client cliente = new Client(serverAddress, port, controlador); // Crear instancia del cliente
+            controlador.setClient(cliente); // Establecer el cliente en el controlador
             System.out.println("Cliente " + cliente + " conectado");
         } catch (IOException e) {
             System.err.println("Error en conexión al servidor " + e.getMessage());
         }
     }
+    
+
+    public void enviarMensajeAlServidor(String mensaje) {
+        if (client != null) {
+            client.enviarMensaje(mensaje); // Llama al método de enviar mensaje del cliente
+        } else {
+            System.out.println("Error: No se puede enviar el mensaje. Cliente no inicializado.");
+        }
+    }
+
+    
 
     public static void test(){
         System.out.println("TTTTT  EEEEE  SSSSS   TTTTT   OO ");

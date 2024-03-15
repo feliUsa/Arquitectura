@@ -60,6 +60,8 @@ public class View extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     // Aquí puedes ejecutar la acción deseada cuando se presione el botón
                     System.out.println("Se presionó el botón " + (buttonIndex + 1));
+                    String mensaje = "Cliente presionó el botón " + (buttonIndex + 1);
+                    controller.enviarMensajeAlServidor(mensaje);
                 }
             });
         }
