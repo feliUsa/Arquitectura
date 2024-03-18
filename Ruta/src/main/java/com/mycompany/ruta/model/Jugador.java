@@ -114,4 +114,8 @@ public class Jugador {
     public List<Carta> getHand(){
         return hand;
     }
+
+    public Carta getCard(int numero){
+        return hand.get(numero);
+    }
 }

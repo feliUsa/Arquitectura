@@ -10,16 +10,18 @@ public class playerFactory {
         Scanner scanner = new Scanner(System.in);
         List<Jugador> players = new ArrayList<>();
 
-        System.out.print("Ingrese la cantidad de jugadores: ");
-        int numPlayers = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
+        // System.out.print("Ingrese la cantidad de jugadores: ");
+        // int numPlayers = scanner.nextInt();
+        // scanner.nextLine(); // Consumir el salto de línea
+        Jugador player = new Jugador("Juan", true, 200, true, false, false, 0);
+        players.add(player);
 
-        for (int i = 1; i <= numPlayers; i++) {
-            System.out.print("Ingrese el nombre del jugador " + i + ": ");
-            String playerName = scanner.nextLine();
-            Jugador player = new Jugador(playerName, true, 200, true, false, false, 0);
-            players.add(player);
-        }
+        // for (int i = 1; i <= numPlayers; i++) {
+        //     System.out.print("Ingrese el nombre del jugador " + i + ": ");
+        //     String playerName = scanner.nextLine();
+        //     Jugador player = new Jugador(playerName, true, 200, true, false, false, 0);
+        //     players.add(player);
+        // }
 
         scanner.close();
         return players;
